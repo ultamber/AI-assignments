@@ -280,9 +280,11 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
         if agent == currentGameState.getNumAgents():
             agent = 0
             depth -= 1
+            
         if depth == 0 or currentGameState.isWin() or currentGameState.isLose():
             #print "terminal ", self.evaluationFunction(currentGameState)
             return self.evaluationFunction(currentGameState)        
+        
         if(agent == 0):
             v = float('-inf')
             for action in currentGameState.getLegalActions(0):
