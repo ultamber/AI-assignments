@@ -47,11 +47,11 @@ class ReflexAgent(Agent):
         bestIndices = [index for index in range(len(scores)) if scores[index] == bestScore]
         chosenIndex = random.choice(bestIndices) # Pick randomly among the best
         '''
-        "Add more of your code here if you want to"
-        print " Current position: ", gameState.getPacmanPosition()
-        print " Available: ", [( index,legalMoves[index], scores[index]) for index in range(len(scores))]
-        print " ChosenIndex", chosenIndex
-        print " Action ", legalMoves[chosenIndex]
+#         "Add more of your code here if you want to"
+#         print " Current position: ", gameState.getPacmanPosition()
+#         print " Available: ", [( index,legalMoves[index], scores[index]) for index in range(len(scores))]
+#         print " ChosenIndex", chosenIndex
+#         print " Action ", legalMoves[chosenIndex]
         '''
         return legalMoves[chosenIndex]
 
@@ -149,6 +149,8 @@ class MinimaxAgent(MultiAgentSearchAgent):
             Returns the total number of agents in the game
         """
         "*** YOUR CODE HERE ***"
+        
+#         starting position 
         v = (float('-inf'), "stop")
         agent = 1
         for action in gameState.getLegalActions(0):
