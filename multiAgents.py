@@ -79,34 +79,21 @@ class ReflexAgent(Agent):
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
-        # if newPos in currentGameState.getFood().asList():
-        #   ClosestFood = 0.1
-        # else:
-        #   ClosestFood = min([(util.manhattanDistance(newPos,x)) for x in newFood.asList()])
-        # ClosestDistToG = min([(util.manhattanDistance(newPos,x.getPosition())) for x in newGhostStates])
+        
+#         float("inf") serves here as a temporary MAX number , same goes for -float("inf")        
+        minimumFood = float("inf")
+        tempFood = successorGameState.getFood().asList()
+        
+#         gets the other food as a list and calculates the minimum manhattan distance between the position and the food 
+        for food in tempFood:
+            minimumFood = min(minimumFood, manhattanDistance(newPos, food))
 
-        # if(not ClosestDistToG): #really close to ghost
-        #   safety = -110
-        # else:
-        #   safety = -10.0/ClosestDistToG
-        # target = 10.0/ClosestFood
-
-        # mobility = len(successorGameState.getLegalActions())
-
-        # w1, w2, w3, w4 = 1, 1, 0, 0.7
-        # return w1*safety + w2*target + w3*newFood.count() + w4*mobility + successorGameState.getScore()
-        minFood = float("inf")
-        newFood = successorGameState.getFood().asList()
-
-        for food in newFood:
-            minFood = min(minFood, manhattanDistance(newPos, food))
-
+#          if theres a ghost nearby set return a negative number because they will eat us           
         for ghost in successorGameState.getGhostPositions():
             if (manhattanDistance(newPos, ghost) < 2):
                 return -float('inf')
 
-        return successorGameState.getScore() + 1.0/minFood
-        #return int(round(ClosestDistToG/ClosestFood))
+        return successorGameState.getScore() + 1.0/minimumFood
 
 
 def scoreEvaluationFunction(currentGameState):
