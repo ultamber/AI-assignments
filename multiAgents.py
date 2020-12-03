@@ -312,14 +312,8 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
             depth -= 1
             
         if depth == 0 or currentGameState.isWin() or currentGameState.isLose():
-<<<<<<< HEAD
             return self.evaluationFunction(currentGameState)   
 
-=======
-            #print "terminal ", self.evaluationFunction(currentGameState)
-            return self.evaluationFunction(currentGameState)        
-        
->>>>>>> e151c5c6f7f185fd8ad2f4ddab123c22919d8c4f
         if(agent == 0):
             v = float('-inf')
             for action in currentGameState.getLegalActions(0):
@@ -354,7 +348,7 @@ You might decide what to multiply each feature by based on how important you thi
 """
 
 def betterEvaluationFunction(currentGameState):
-    
+    """
       Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
       evaluation function (question 5).
 
@@ -368,7 +362,7 @@ def betterEvaluationFunction(currentGameState):
     hunt: distance from closest ghost
             values: 0 if ghosts are not scared
                     (~1,20)
-    
+    """
     "*** YOUR CODE HERE ***"
     currentGameState
     Pos = currentGameState.getPacmanPosition()
